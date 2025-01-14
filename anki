@@ -13,17 +13,15 @@ while again == "y" : #While loop that we check at the end to play another game
         memDigs.append(x) #Add generated random dig to the end of the list
         count += 1 #Increments toward loop end
 
-    input("Please enter a key when you're ready. ")
+    input("Press enter when you're ready. ")
     print ("\033c") #Clears terminal
-    print ("What were the numbers?")
+    answer = input("Enter the numbers in a single streak then press enter.\n") #Get the answer from the user in a string
 
     count = 0 #Reset count, we will reuse it
-    usrDigs = [] #Create list to store user input and later compare it to memDigs
     score = 0
 
     while count < int(limit) :
-        usrDigs.append(int(input())) #Gets user input and adds it to the end of the list, converts to integer
-        if memDigs[count] == usrDigs[count] :
+        if memDigs[count] == int(answer[count]) : #Transform digs entered by user into ints and compares
             score += 1 #Adds to the score if the digs match
         count += 1
 
