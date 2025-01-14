@@ -1,27 +1,33 @@
 import random #Allows to make random digs
-limit = input("How many digits do you want to memorize? ") #Set number of digs printed (used for loop length calculation)
-memDigs = [] #Set list for random digs to memorize
 
-count = 0 #Set variable for loop length
-while count < int(limit) : #Set loop length
-    x = random.randint (0, 9) #Set var to store random dig
-    print (x) #Print a random dig
-    memDigs.append(x) #Add generated random dig to the end of the list
-    count += 1 #Increments toward loop end
+again = "y"
+while again == "y" : #While loop that we check at the end to play another game
+    print("\033c")  # Clears terminal (better in case of replay)
+    limit = input("How many digits do you want to memorize? ") #Set number of digs printed (used for loop length calculation)
+    memDigs = [] #Set list for random digs to memorize
 
-input("Please enter a key when you're ready. ")
-print ("\033c") #Clears terminal
-print ("What were the numbers?")
+    count = 0 #Set variable for loop length
+    while count < int(limit) : #Set loop length
+        x = random.randint (0, 9) #Set var store random dig
+        print (x) #Print a random dig
+        memDigs.append(x) #Add generated random dig to the end of the list
+        count += 1 #Increments toward loop end
 
-count = 0 #Reset count, we gonna reuse it
-usrDigs = [] #Create list to store user input and later compare it to memDigs
-score = 0
+    input("Please enter a key when you're ready. ")
+    print ("\033c") #Clears terminal
+    print ("What were the numbers?")
 
-while count < int(limit) :
-    usrDigs.append(int(input())) #Gets user input and adds it to the end of the list, converts to integer
-    if memDigs[count] == usrDigs[count] :
-        score += 1 #Adds to the score if the digs match
-    count += 1
+    count = 0 #Reset count, we will reuse it
+    usrDigs = [] #Create list to store user input and later compare it to memDigs
+    score = 0
 
-print ("Your score is: ")
-print (str(score) + "/" + str(limit))
+    while count < int(limit) :
+        usrDigs.append(int(input())) #Gets user input and adds it to the end of the list, converts to integer
+        if memDigs[count] == usrDigs[count] :
+            score += 1 #Adds to the score if the digs match
+        count += 1
+
+    print ("Your score is: ")
+    print (str(score) + "/" + str(limit)) #Display score with values as string. Didn't want to work as ints...
+
+    again = input("Another? (y/n): ")
