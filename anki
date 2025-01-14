@@ -1,0 +1,27 @@
+import random #Allows to make random digs
+limit = input("How many digits do you want to memorize? ") #Set number of digs printed (used for loop length calculation)
+memDigs = [] #Set list for random digs to memorize
+
+count = 0 #Set variable for loop length
+while count < int(limit) : #Set loop length
+    x = random.randint (0, 9) #Set var to store random dig
+    print (x) #Print a random dig
+    memDigs.append(x) #Add generated random dig to the end of the list
+    count += 1 #Increments toward loop end
+
+input("Please enter a key when you're ready. ")
+print ("\033c") #Clears terminal
+print ("What were the numbers?")
+
+count = 0 #Reset count, we gonna reuse it
+usrDigs = [] #Create list to store user input and later compare it to memDigs
+score = 0
+
+while count < int(limit) :
+    usrDigs.append(int(input())) #Gets user input and adds it to the end of the list, converts to integer
+    if memDigs[count] == usrDigs[count] :
+        score += 1 #Adds to the score if the digs match
+    count += 1
+
+print ("Your score is: ")
+print (str(score) + "/" + str(limit))
