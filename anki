@@ -16,6 +16,18 @@ while again == "y" : #While loop that we check at the end to play another game
     input("Press enter when you're ready. ")
     print ("\033c") #Clears terminal
     answer = input("Enter the numbers in a single streak then press enter.\n") #Get the answer from the user in a string
+    answer = list(answer) #Changes the string into a list, so I can access any entry via its index
+
+#Padding to the user's answers when not enough answers
+    y = len(answer) #Doesn't start at 0 ! If you enter 3 digs, the length of answer is 3, not 2!
+    while y < int(limit) : #Loop from the end of user's current answers until end of digs to memorise
+        answer.append("0") #Add a placeholder to answers
+        z = len(answer) #Recalculate length of answer to get the index of the dig added (last one) and the one to compare to
+        if memDigs[z-1] != 0 : #Check if the dig to memorise is other than 0
+            answer[z-1] = "0" #If so, sets the answer as 0 so user doesn't get point from missing dig
+        else :
+            answer[z-1] = "1" #Adds a 1 if the original dig was 0
+        y += 1
 
     count = 0 #Reset count, we will reuse it
     score = 0
