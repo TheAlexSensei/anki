@@ -37,6 +37,9 @@ while again == "y" : #While loop that we check at the end to play another game
             score += 1 #Adds to the score if the digs match
         count += 1
 
+    print("Original numbers:")
+    print(memDigs) #Print the original numbers to compare to your answers
+
     print ("Your score is: ")
     print (str(score) + "/" + str(limit)) #Display score with values as string. Didn't want to work as ints...
 
