@@ -9,9 +9,17 @@ while again == "y" : #While loop that we check at the end to play another game
     count = 0 #Set variable for loop length
     while count < int(limit) : #Set loop length
         x = random.randint (0, 9) #Set var store random dig
-        print (x) #Print a random dig
+        #print (x) #Formerly used before implementation of the printing of the digs with linebreak functionality lower
         memDigs.append(x) #Add generated random dig to the end of the list
         count += 1 #Increments toward loop end
+
+    linebreak = 0 #Var used to calculate where to cut the printing of the digs so there is a line break
+    while linebreak < int(limit) : #Loop to print the digs in batches of 10
+        if linebreak + 10 < int(limit) : #Checking if the printing of digs is 10 or more away from the end of the list
+            print(memDigs[linebreak : linebreak + 10]) #Print the 10 next digs
+        else : #If we're less than 10 away from the end of the list
+            print(memDigs[linebreak : int(limit)]) #Print the remaining digs
+        linebreak += 10
 
     input("Press enter when you're ready. ")
     print ("\033c") #Clears terminal
@@ -36,6 +44,9 @@ while again == "y" : #While loop that we check at the end to play another game
         if memDigs[count] == int(answer[count]) : #Transform digs entered by user into ints and compares
             score += 1 #Adds to the score if the digs match
         count += 1
+
+    print("Original numbers:")
+    print(memDigs) #Print the original numbers to compare to your answers
 
     print ("Your score is: ")
     print (str(score) + "/" + str(limit)) #Display score with values as string. Didn't want to work as ints...
